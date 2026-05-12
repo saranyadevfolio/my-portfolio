@@ -1,9 +1,7 @@
-import Home from "./pages/Home";
+import Portfolio from "./Components/Portfolio";
 
-const App = () => {
-  return (
-    <Home />
-  );
+function App() {
+  return <Portfolio />;
 }
 
 export default App;
