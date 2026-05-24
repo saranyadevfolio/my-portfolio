@@ -5,20 +5,20 @@ import { motion } from "framer-motion";
 export default function Portfolio() {
 
   const form = useRef();
-  const [loading, setLoading] = useState(false); // ✅ INSIDE COMPONENT ONLY
+  const [loading, setLoading] = useState(false); 
 
   const sendEmail = (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault();         
 
-    emailjs.sendForm(
-      "service_5xsbxsj",
-      "template_j06fxjm",
-      form.current,
+
+    emailjs.sendForm(      
+      "service_5xsbxsj",       
+      "template_j06fxjm",     
+      form.current,  
       "iWvN7tjmuo6B1tuW-"
-    )
+    )    
     .then(() => {
-      alert("Message sent successfully 🚀");
+      alert("Message sent successfully 🚀");    
       e.target.reset();
     })
     .catch(() => {
@@ -48,7 +48,7 @@ export default function Portfolio() {
     {
       title: "SEO & Website Optimization",
       desc: "Implemented SEO strategies, schema markup, performance optimization, and modern web practices to improve search visibility.",
-      tech: ["SEO", "Schema", "Optimization"],
+      tech: ["SEO", "Schema", "Optimization"],       
     },
   ];
 
@@ -68,14 +68,14 @@ export default function Portfolio() {
     "Website Management",
     "Domain Management",
     "WordPress",
-    "Elementor Pro",
+    "Elementor Pro",    
     "Git & GitHub",
     "Responsive Design",
     "UI/UX Design",
     "CRM Solutions",
   ];
 
-  return (
+  return (      
     <div className="min-h-screen bg-black text-white overflow-hidden font-sans">
       {/* Animated Background */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse"></div>
@@ -93,6 +93,7 @@ export default function Portfolio() {
             <p className="uppercase tracking-[5px] text-cyan-400 mb-5 text-sm font-semibold">
               👩‍💻 Frontend Developer • SEO Specialist • UI Designer
             </p>
+
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight mb-8">
               Creative <br />
@@ -147,7 +148,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section */}   
       <section className="px-6 py-24 md:px-16 lg:px-28 bg-zinc-950/80 backdrop-blur-lg">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-8">
@@ -179,7 +180,7 @@ export default function Portfolio() {
             Expertise in frontend development, responsive web design,
             SEO optimization, hosting management, website maintenance,
             CRM solutions, and creative UI/UX experiences.
-          </p>
+          </p> 
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
@@ -277,7 +278,7 @@ export default function Portfolio() {
           className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
         />
 
-        <input
+        <input        
           type="email"
           name="from_email"
           placeholder="Your Email"
@@ -290,7 +291,7 @@ export default function Portfolio() {
           placeholder="Type your message..."
           rows="5"
           required
-          className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
+          className="w-full bg-black/40 border border-white/10 round   ed-2xl px-6 py-4 outline-none focus:border-cyan-400"
         ></textarea>
 <button
   type="submit"

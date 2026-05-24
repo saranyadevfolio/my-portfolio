@@ -17,8 +17,8 @@ function App() {
       id: Date.now(),
       text: task,
       completed: false,
-    };
-
+    };    
+   
     // Add new task to array
     setTasks([...tasks, newTask]);
 
@@ -26,15 +26,16 @@ function App() {
     setTask("");
   };
 
+
   // Function to delete task
   const deleteTask = (id) => {
     const updatedTasks = tasks.filter((t) => t.id !== id);
     setTasks(updatedTasks);
   };
-
+  
   // Function to mark task complete
   const toggleComplete = (id) => {
-    const updatedTasks = tasks.map((t) =>
+    const updatedTasks = tasks.map((t) =>    
       t.id === id
         ? { ...t, completed: !t.completed }
         : t
@@ -47,20 +48,21 @@ function App() {
     <div
       style={{
         maxWidth: "500px",
-        margin: "50px auto",
+        margin: "50px auto",       
         fontFamily: "Arial",
       }}
     >
       <h1>Task Manager</h1>
 
-      {/* Input Section */}
+      {/* Input Section */}                    
       <div
         style={{
           display: "flex",
           gap: "10px",
           marginBottom: "20px",
         }}
-      >
+      >       
+
         <input
           type="text"
           placeholder="Enter a task..."
@@ -73,7 +75,7 @@ function App() {
           }}
         />
 
-        <button onClick={addTask}>
+        <button onClick={addTask }>    
           Add
         </button>
       </div>
@@ -135,4 +137,7 @@ function App() {
   );
 }
 
-export default App;
+export default App;  
+
+
+
