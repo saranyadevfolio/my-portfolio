@@ -3,184 +3,239 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Portfolio() {
-
   const form = useRef();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const sendEmail = (e) => {
-    e.preventDefault();         
+    e.preventDefault();
 
+    setLoading(true);
 
-    emailjs.sendForm(      
-      "service_5xsbxsj",       
-      "template_j06fxjm",     
-      form.current,  
-      "iWvN7tjmuo6B1tuW-"
-    )    
-    .then(() => {
-      alert("Message sent successfully 🚀");    
-      e.target.reset();
-    })
-    .catch(() => {
-      alert("Failed to send message ❌");
-    })
-    .finally(() => {
-      setLoading(false);
-    });
+    emailjs
+      .sendForm(
+        "service_5xsbxsj",
+        "template_j06fxjm",
+        form.current,
+        "iWvN7tjmuo6B1tuW-"
+      )
+      .then(() => {
+        alert("Message sent successfully 🚀");
+        e.target.reset();
+      })
+      .catch(() => {
+        alert("Failed to send message ❌");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const projects = [
     {
       title: "Business Website Development",
-      desc: "Designed and developed modern responsive business websites with SEO optimization, UI animations, and high-performance layouts.",
-      tech: ["React", "SEO", "Tailwind CSS"],
+      desc: "Modern responsive business websites with clean UI, animations, and SEO-focused architecture.",
+      number: "01",
     },
     {
       title: "WordPress & Elementor Solutions",
-      desc: "Created dynamic WordPress websites using Elementor Pro with custom responsive sections, animations, and optimized user experiences.",
-      tech: ["WordPress", "Elementor", "Responsive Design"],
+      desc: "Custom WordPress websites with advanced responsive layouts and optimized UX.",
+      number: "02",
     },
     {
       title: "Zoho CRM & Odoo Integrations",
-      desc: "Worked on CRM and ERP-related web solutions with optimized workflows, modern UI designs, and scalable business systems.",
-      tech: ["Zoho CRM", "Odoo", "Business Solutions"],
+      desc: "Business workflow solutions with scalable frontend systems and CRM integrations.",
+      number: "03",
     },
     {
-      title: "SEO & Website Optimization",
-      desc: "Implemented SEO strategies, schema markup, performance optimization, and modern web practices to improve search visibility.",
-      tech: ["SEO", "Schema", "Optimization"],       
+      title: "SEO & Performance Optimization",
+      desc: "Schema markup, optimization, speed improvements, and search visibility enhancements.",
+      number: "04",
     },
   ];
 
   const skills = [
-    "HTML5",
-    "CSS3",
-    "Bootstrap",
-    "JavaScript",
     "React JS",
     "Tailwind CSS",
-    "PHP",
-    "MySQL",
-    "XML",
-    "SEO Optimization",
-    "Graphic Designing",
-    "Hosting Management",
-    "Website Management",
-    "Domain Management",
+    "JavaScript",
     "WordPress",
-    "Elementor Pro",    
-    "Git & GitHub",
+    "Elementor Pro",
+    "SEO",
+    "UI/UX",
     "Responsive Design",
-    "UI/UX Design",
-    "CRM Solutions",
+    "GitHub",
+    "Hosting",
+    "MySQL",
+    "PHP",
   ];
 
-  return (      
-    <div className="min-h-screen bg-black text-white overflow-hidden font-sans">
-      {/* Animated Background */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse"></div>
+  return (
+    <div className="bg-[#0a0a0a] text-white overflow-hidden">
+      {/* Background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,#1e293b22,transparent_40%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,#2563eb22,transparent_40%)]"></div>
+      </div>
 
-      {/* Hero Section */}
-      <section className="relative px-6 py-28 md:px-16 lg:px-28">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+      {/* Navbar */}
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+          <h1 className="text-xl font-bold tracking-widest">
+            SARANYA.
+          </h1>
 
+          <nav className="hidden md:flex gap-10 text-sm text-gray-300">
+            <a href="#about" className="hover:text-white transition">
+              About
+            </a>
+            <a href="#skills" className="hover:text-white transition">
+              Skills
+            </a>
+            <a href="#projects" className="hover:text-white transition">
+              Projects
+            </a>
+            <a href="#contact" className="hover:text-white transition">
+              Contact
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="min-h-screen flex items-center px-6 md:px-16 lg:px-28 pt-32">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="uppercase tracking-[5px] text-cyan-400 mb-5 text-sm font-semibold">
-              👩‍💻 Frontend Developer • SEO Specialist • UI Designer
+            <p className="uppercase tracking-[4px] text-cyan-400 text-sm mb-6">
+              Frontend Developer • SEO Specialist
             </p>
 
-
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-8">
-              Creative <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
-                React Developer
+            <h1 className="text-6xl md:text-8xl font-black leading-none tracking-tight mb-8">
+              Building
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                Modern
               </span>
+              Digital Experiences
             </h1>
 
-            <p className="text-gray-300 text-lg leading-9 mb-10 max-w-2xl">
-              Passionate and creative Web Developer with strong expertise in
-              HTML5, CSS3, Bootstrap, JavaScript, React JS, Tailwind CSS,
-              PHP, MySQL, XML, SEO Optimization, Graphic Designing,
-              Website Hosting, Domain Management, and Business Website Development.
-
-              Specialized in building high-performance responsive websites,
-              SEO-friendly web applications, modern UI/UX experiences,
-              animated landing pages, and scalable business solutions 🚀
+            <p className="text-gray-400 text-lg leading-9 max-w-2xl mb-10">
+              Frontend developer focused on React JS, UI/UX design,
+              WordPress development, SEO optimization, and modern web
+              experiences with clean design systems and scalable architecture.
             </p>
 
             <div className="flex flex-wrap gap-5">
-              <button className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 transition duration-300 font-semibold shadow-[0_0_30px_rgba(59,130,246,0.5)]">
-                View Projects ✨
+              <button className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition duration-300">
+                View Projects
               </button>
 
-              <button className="px-8 py-4 rounded-2xl border border-zinc-700 hover:bg-white hover:text-black transition duration-300 font-semibold">
-                Contact Me 💌
+              <button className="px-8 py-4 rounded-full border border-white/20 hover:bg-white hover:text-black transition duration-300">
+                Contact Me
               </button>
             </div>
           </motion.div>
 
-          {/* Right Side Card */}
+          {/* RIGHT */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1 }}
-            className="flex justify-center"
+            className="relative"
           >
-            <div className="w-[340px] h-[340px] rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 p-1 shadow-[0_0_70px_rgba(59,130,246,0.5)] animate-pulse">
-              <div className="w-full h-full rounded-full bg-zinc-950 flex items-center justify-center text-center p-10">
-                <div>
-                  <h2 className="text-4xl font-bold mb-4">
-                    Frontend 👩‍💻
-                  </h2>
+            <div className="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[40px] p-8 rotate-3 hover:rotate-0 transition duration-500 shadow-2xl">
 
-                  <p className="text-gray-400 leading-8 text-lg">
-                    React • SEO • UI/UX • Hosting • Graphic Design • Web Management
-                  </p>
+              <div className="bg-[#111] rounded-3xl p-6 border border-white/5">
+
+                <div className="flex gap-2 mb-6">
+                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
                 </div>
+
+                <div className="space-y-4">
+                  <div className="h-5 bg-white/10 rounded-full w-2/3"></div>
+                  <div className="h-5 bg-cyan-500/20 rounded-full w-full"></div>
+                  <div className="h-5 bg-white/10 rounded-full w-5/6"></div>
+                  <div className="h-32 bg-gradient-to-br from-cyan-500/20 to-blue-500/10 rounded-3xl mt-8"></div>
+                </div>
+              </div>
+
+              {/* Floating Cards */}
+              <div className="absolute -top-8 -left-8 bg-black border border-white/10 rounded-3xl px-6 py-5 backdrop-blur-xl">
+                <h3 className="text-3xl font-bold">3+</h3>
+                <p className="text-gray-400 text-sm">
+                  Years Experience
+                </p>
+              </div>
+
+              <div className="absolute -bottom-8 -right-8 bg-black border border-white/10 rounded-3xl px-6 py-5 backdrop-blur-xl">
+                <h3 className="text-3xl font-bold">20+</h3>
+                <p className="text-gray-400 text-sm">
+                  Projects Completed
+                </p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* About Section */}   
-      <section className="px-6 py-24 md:px-16 lg:px-28 bg-zinc-950/80 backdrop-blur-lg">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-8">
-            About Me 🚀
-          </h2>
+      {/* ABOUT */}
+      <section
+        id="about"
+        className="px-6 md:px-16 lg:px-28 py-32"
+      >
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20">
 
-          <p className="text-gray-300 text-lg leading-9 max-w-5xl mx-auto">
-            Experienced Frontend Web Developer with 3+ years of expertise in
-            creating modern business websites, responsive web applications,
-            SEO-friendly platforms, and engaging user experiences.
+          <div>
+            <p className="text-cyan-400 uppercase tracking-[4px] mb-4">
+              About
+            </p>
 
-            Skilled in React JS, Tailwind CSS, WordPress, Elementor Pro,
-            PHP, MySQL, Website Hosting, Domain Management, and Graphic Designing.
+            <h2 className="text-5xl md:text-6xl font-black leading-tight">
+              Designing powerful web experiences.
+            </h2>
+          </div>
 
-            Passionate about building powerful digital experiences with clean UI,
-            fast performance, creative animations, and modern web technologies.
-          </p>
+          <div>
+            <p className="text-gray-400 leading-9 text-lg">
+              Experienced frontend developer with expertise in React JS,
+              WordPress, Elementor Pro, Tailwind CSS, responsive design,
+              SEO optimization, hosting management, and UI/UX systems.
+
+              Passionate about creating fast, scalable, modern websites
+              with premium interfaces and business-focused solutions.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="px-6 py-24 md:px-16 lg:px-28">
+      {/* SKILLS */}
+      <section
+        id="skills"
+        className="px-6 md:px-16 lg:px-28 py-20"
+      >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-6">
-            Professional Skills ⚡
-          </h2>
 
-          <p className="text-gray-400 text-center max-w-3xl mx-auto mb-16 leading-8">
-            Expertise in frontend development, responsive web design,
-            SEO optimization, hosting management, website maintenance,
-            CRM solutions, and creative UI/UX experiences.
-          </p> 
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
+            <div>
+              <p className="text-cyan-400 uppercase tracking-[4px] mb-4">
+                Skills
+              </p>
+
+              <h2 className="text-5xl font-black">
+                Tech Stack
+              </h2>
+            </div>
+
+            <p className="text-gray-400 max-w-xl leading-8">
+              Modern frontend technologies and business-focused
+              development solutions.
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
@@ -188,130 +243,142 @@ export default function Portfolio() {
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-zinc-900/70 backdrop-blur-lg border border-zinc-800 rounded-3xl p-6 text-center hover:-translate-y-3 hover:border-cyan-400 transition duration-300 shadow-xl"
+                transition={{ delay: index * 0.05 }}
+                className="bg-white/5 border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-300"
               >
-                <p className="font-semibold text-lg">
+                <h3 className="text-xl font-semibold">
                   {skill}
-                </p>
+                </h3>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects */}
-      <section className="px-6 py-24 md:px-16 lg:px-28 bg-zinc-950/80 backdrop-blur-lg">
+      {/* PROJECTS */}
+      <section
+        id="projects"
+        className="px-6 md:px-16 lg:px-28 py-32"
+      >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16">
-            Featured Projects ✨
+
+          <p className="text-cyan-400 uppercase tracking-[4px] mb-4">
+            Portfolio
+          </p>
+
+          <h2 className="text-5xl md:text-6xl font-black mb-20">
+            Selected Projects
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="space-y-10">
+
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="bg-zinc-900/80 backdrop-blur-lg border border-zinc-800 rounded-[30px] p-10 hover:scale-[1.03] hover:border-cyan-400 transition duration-300 shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+                transition={{ delay: index * 0.1 }}
+                className="group border border-white/10 rounded-[40px] p-10 hover:bg-white/5 transition duration-500"
               >
-                <h3 className="text-3xl font-bold mb-5">
-                  {project.title}
-                </h3>
 
-                <p className="text-gray-400 leading-8 mb-8 text-lg">
-                  {project.desc}
-                </p>
+                <div className="grid lg:grid-cols-12 gap-10 items-center">
 
-                <div className="flex flex-wrap gap-3">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm"
-                    >
-                      {tech}
+                  <div className="lg:col-span-3">
+                    <span className="text-6xl font-black text-white/10">
+                      {project.number}
                     </span>
-                  ))}
+                  </div>
+
+                  <div className="lg:col-span-6">
+                    <h3 className="text-3xl font-bold mb-4">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-gray-400 leading-8">
+                      {project.desc}
+                    </p>
+                  </div>
+
+                  <div className="lg:col-span-3 flex justify-start lg:justify-end">
+                    <button className="px-6 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition duration-300">
+                      View Details
+                    </button>
+                  </div>
+
                 </div>
               </motion.div>
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-{/* Contact Section */}
-{/* Contact Section */}
-<section className="px-6 py-24 md:px-16 lg:px-28">
+      {/* CONTACT */}
+      <section
+        id="contact"
+        className="px-6 py-24 md:px-16 lg:px-28"
+      >
+        <div className="max-w-4xl mx-auto">
 
-  <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-12 md:p-16"
+          >
 
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="bg-gradient-to-r from-cyan-600/20 to-purple-700/20 backdrop-blur-xl border border-white/10 rounded-[40px] p-12 md:p-16 text-center shadow-[0_0_50px_rgba(59,130,246,0.2)]"
-    >
+            <h2 className="text-5xl font-black mb-8 text-center">
+              Let’s Work Together
+            </h2>
 
-      <h2 className="text-4xl md:text-5xl font-bold mb-8">
-        Let’s Connect 💜
-      </h2>
+            <p className="text-lg leading-9 text-gray-400 mb-12 text-center max-w-3xl mx-auto">
+              Interested in frontend development, website creation,
+              SEO optimization, UI/UX design, or business website solutions?
+              Send your message directly.
+            </p>
 
-      <p className="text-lg leading-9 text-gray-300 mb-12 max-w-3xl mx-auto">
-        Interested in working together? Send your message directly.
-        I’ll get back to you regarding projects, collaborations,
-        frontend development, SEO optimization, UI/UX design,
-        and modern website solutions 🚀
-      </p>
+            {/* FORM */}
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
 
-      {/* FORM (EmailJS Connected) */}
-      <form ref={form} onSubmit={sendEmail} className="space-y-6">
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Your Name"
+                required
+                className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
+              />
 
-        <input
-          type="text"
-          name="from_name"
-          placeholder="Your Name"
-          required
-          className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
-        />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Your Email"
+                required
+                className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
+              />
 
-        <input        
-          type="email"
-          name="from_email"
-          placeholder="Your Email"
-          required
-          className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
-        />
+              <textarea
+                name="message"
+                placeholder="Type your message..."
+                rows="5"
+                required
+                className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-cyan-400"
+              ></textarea>
 
-        <textarea
-          name="message"
-          placeholder="Type your message..."
-          rows="5"
-          required
-          className="w-full bg-black/40 border border-white/10 round   ed-2xl px-6 py-4 outline-none focus:border-cyan-400"
-        ></textarea>
-<button
-  type="submit"
-  disabled={loading}
-  className="bg-white text-black px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition duration-300 shadow-xl disabled:opacity-50"
->
-  {loading ? "Sending..." : "🚀 Send Message"}
-</button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-white text-black px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition duration-300 shadow-xl disabled:opacity-50"
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </button>
 
-      </form>
+            </form>
 
-      <p className="text-sm text-gray-500 mt-8">
-        Secure contact form • Your message goes directly to my inbox 🔒
-      </p>
-
-    </motion.div>
-
-  </div>
-
-</section>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
